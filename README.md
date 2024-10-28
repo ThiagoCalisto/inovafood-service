@@ -18,10 +18,6 @@ Para subir a aplicação PHP usando o Nginx como servidor web, siga este passo a
     ```
 
 3. **Configure o DB em src/Database.php**:
-    
-    ```
-    sudo apt install php7.4-fpm php7.4-mysql
-    ```
 
 ### Passo 2: Configurar o Nginx
 arquivo nginx.conf
