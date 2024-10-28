@@ -18,6 +18,54 @@ Para subir a aplicação PHP usando o Nginx como servidor web, siga este passo a
     ```
 
 ### Passo 2: Configurar o Nginx
+arquivo nginx.conf
+
+    ```
+    user www-data;
+    worker_processes auto;
+    worker_cpu_affinity auto;
+    pid /run/nginx.pid;
+    error_log /var/log/nginx/error.log;
+    include /etc/nginx/modules-enabled/*.conf;
+
+    events {
+        worker_connections 768;
+    }
+
+    http {
+    sendfile on;
+    tcp_nopush on;
+    types_hash_max_size 2048;
+    server_tokens off;
+
+    include /etc/nginx/mime.types;
+    default_type application/octet-stream;
+
+    error_log /var/log/nginx/error.log;
+    access_log /var/log/nginx/access.log;
+
+    gzip on;
+
+    server {
+        listen 80;
+        server_name localhost;
+
+        root /home/kali/Documents/HelloWorld/inovafood-service/public;  # Verifique se este caminho está correto
+        index index.php index.html;
+
+        location / {
+            try_files $uri $uri/ /index.php?$query_string;
+        }
+
+        location ~ \.php$ {
+            include snippets/fastcgi-php.conf;
+            fastcgi_pass unix:/var/run/php/php7.4-fpm.sock;  # Verifique se este caminho está correto
+            fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+            include fastcgi_params;
+        }
+    }
+    }
+    ```
 
 
 ### Passo 4: Colocar sua Aplicação no Diretório
