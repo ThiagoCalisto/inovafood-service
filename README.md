@@ -86,7 +86,3 @@ arquivo nginx.conf
         - **Type**: File
         - **Value**: Selecione o arquivo `.docx` que deseja converter.
 
-![image](https://github.com/user-attachments/assets/5070bca2-2237-43e4-b0f0-166a0eafca9b)
-
-![image 1](https://github.com/user-attachments/assets/208f61de-b244-47d0-b0f0-eb0dfcf08453)
-
