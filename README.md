@@ -33,37 +33,37 @@ arquivo nginx.conf
     }
 
     http {
-    sendfile on;
-    tcp_nopush on;
-    types_hash_max_size 2048;
-    server_tokens off;
+        sendfile on;
+        tcp_nopush on;
+        types_hash_max_size 2048;
+        server_tokens off;
+    
+        include /etc/nginx/mime.types;
+        default_type application/octet-stream;
+    
+        error_log /var/log/nginx/error.log;
+        access_log /var/log/nginx/access.log;
+    
+        gzip on;
 
-    include /etc/nginx/mime.types;
-    default_type application/octet-stream;
-
-    error_log /var/log/nginx/error.log;
-    access_log /var/log/nginx/access.log;
-
-    gzip on;
-
-    server {
-        listen 80;
-        server_name localhost;
-
-        root /home/kali/Documents/HelloWorld/inovafood-service/public;  # Verifique se este caminho está correto
-        index index.php index.html;
-
-        location / {
-            try_files $uri $uri/ /index.php?$query_string;
+        server {
+            listen 80;
+            server_name localhost;
+    
+            root /home/kali/Documents/HelloWorld/inovafood-service/public;  # Verifique se este caminho está correto
+            index index.php index.html;
+    
+            location / {
+                try_files $uri $uri/ /index.php?$query_string;
+            }
+    
+            location ~ \.php$ {
+                include snippets/fastcgi-php.conf;
+                fastcgi_pass unix:/var/run/php/php7.4-fpm.sock;  # Verifique se este caminho está correto
+                fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+                include fastcgi_params;
+            }
         }
-
-        location ~ \.php$ {
-            include snippets/fastcgi-php.conf;
-            fastcgi_pass unix:/var/run/php/php7.4-fpm.sock;  # Verifique se este caminho está correto
-            fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-            include fastcgi_params;
-        }
-    }
     }
     ```
 
