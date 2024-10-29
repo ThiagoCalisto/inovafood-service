@@ -70,7 +70,7 @@ arquivo nginx.conf
     ```
 
 
-### Passo 4: Colocar sua Aplicação no Diretório
+### Passo 3: Colocar sua Aplicação no Diretório
 
 1. **Certifique-se de que as permissões estão corretas**:
     
@@ -78,7 +78,7 @@ arquivo nginx.conf
     sudo chown -R www-data:www-data /caminho/para/sua_aplicacao
     sudo chmod -R 755 /caminho/para/sua_aplicacao
     ```
-### Passo 5: Testar a Conversão Usando o Postman
+### Passo 4: Testar a Conversão Usando o Postman
 
 1. **Abra o Postman** e configure uma nova requisição:
     - **Método**: POST
